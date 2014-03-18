@@ -1,0 +1,19 @@
+@(form: Form[(String,String)])(implicit session: play.api.mvc.Session)
+
+@main(s"Login to I Vow To") {
+    @helper.form(action = routes.Auth.authenticate) {
+
+        @form.globalError.map { error =>
+            <div class="alert alert-error">
+                @error.message
+            </div>
+        }
+
+        @helper.inputText(form("username"))
+
+        @helper.inputPassword(form("password"))
+
+        <button type="submit" class="btn">Login</button>
+
+    }
+}

@@ -1,0 +1,10 @@
+@(vow: Vow)(implicit session: play.api.mvc.Session)
+
+@main(s"I vow to ${vow.text}") {
+    <h2>I vow to @vow.text</h2>
+    @defining(vow.user) { user =>
+        @if(user != null) {
+            <p>By: <a href="@user.profileUrl">@user.username</a></p>
+        }
+    }
+}

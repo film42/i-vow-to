@@ -1,0 +1,25 @@
+logs
+project/project
+project/target
+target
+tmp
+.history
+
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+

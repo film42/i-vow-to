@@ -1,0 +1,29 @@
+@(users: List[User], vows: List[Vow], vowForm: Form[String])(implicit session: play.api.mvc.Session)
+@import helper._
+
+@main("Users") {
+    <br/>
+    @form(routes.Application.newVow) {
+
+        I vow to <input type="text" name="text"/>
+
+        <input class="btn" type="submit" value="Vow">
+
+    }
+    <hr/>
+
+    <ul>
+    @for(u <- users) {
+        <li>@u.username</li>
+    }
+    </ul>
+
+    <hr/>
+
+    <ul>
+    @for(v <- vows) {
+        <li><a href="/@v.slug">I vow to @v.text</a></li>
+    }
+    </ul>
+
+}

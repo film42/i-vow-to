@@ -1,0 +1,11 @@
+@(user: User)(implicit session: play.api.mvc.Session)
+
+    @main(s"User - ${user.username}") {
+        <h3>@user.username</h3>
+        <hr/>
+        <ul>
+        @for(v <- user.vows) {
+            <li>I vow to <a href="/@v.slug">@v.text</a></li>
+        }
+        </ul>
+    }
