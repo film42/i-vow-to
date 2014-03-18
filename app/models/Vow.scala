@@ -31,7 +31,7 @@ object Vow extends ModelCompanion[Vow, ObjectId] {
   def collection = mongoCollection("vows")
 
   val dao = new SalatDAO[Vow, ObjectId](collection) {}
-  def all: List[Vow] = dao.find(ref = MongoDBObject()).toList
+  def all: List[Vow] = dao.find(ref = MongoDBObject()).sort(orderBy = MongoDBObject("_id" -> -1)).toList
 
   def findAllByUserID(id :String) = dao.find(ref = MongoDBObject("userId" -> id)).toList
 
@@ -40,6 +40,5 @@ object Vow extends ModelCompanion[Vow, ObjectId] {
   def findUser(v: Vow) = User.findOneByUsername(v.userId)
 
   def findOneBySlug(slug: String): Option[Vow] = dao.findOne(MongoDBObject("slug" -> slug))
-
 }
 

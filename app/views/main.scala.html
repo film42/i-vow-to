@@ -5,25 +5,30 @@
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/website.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/moment.min.js")" type="text/javascript"></script>
     </head>
     <body>
         <div class="container">
-            <br/>
-            <div class="alert">
-                @if(session.get("username").isEmpty) {
-                    Welcome, please <a href="@routes.Auth.login">login</a>
-                } else {
-                    Logged in as: @session.get("username")
-                    <div class="pull-right">
-                        <a href="@routes.Auth.logout">Logout</a>
-                    </div>
-                }
-            </div>
             <div class="span12">
-                @content
+                <br/>
+                <div class="alert">
+                    @if(session.get("username").isEmpty) {
+                        Welcome, please <a href="@routes.Auth.login">login</a>
+                    } else {
+                        Logged in as: @session.get("username")
+                        <div class="pull-right">
+                            <a href="@routes.Auth.logout">Logout</a>
+                        </div>
+                    }
+                </div>
+
+                <div class="application">
+                    @content
+                </div>
             </div>
         </div>
     </body>

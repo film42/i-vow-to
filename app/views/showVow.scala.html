@@ -1,10 +1,192 @@
 @(vow: Vow)(implicit session: play.api.mvc.Session)
 
-@main(s"I vow to ${vow.text}") {
-    <h2>I vow to @vow.text</h2>
-    @defining(vow.user) { user =>
-        @if(user != null) {
-            <p>By: <a href="@user.profileUrl">@user.username</a></p>
-        }
-    }
-}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>I vow to @vow.text</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/backbone.css")">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/moment.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="sidebar" class="interface">
+            <div class="logo">
+                <a href="@routes.Application.index">
+                    <img src="@routes.Assets.at("images/logo.png")">
+                </a>
+            </div>
+
+            <ul class="navigation">
+                <li>New Vow!</li>
+                <li class="current_page">Vowisphere</li>
+                <li>Profile</li>
+                <LI>About</LI>
+            </ul>
+
+            <div id="session">
+                <img src="@routes.Assets.at("images/mark6.jpeg")" width="50px" height="50px">
+                <div class="sessionRight">
+                    <span class="nameSmall">Mike Bell</span>
+                    <ul>
+                        <li>Vows: 340</li>
+                        <li><a href="#">Settings</a> <a href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <h2 style="font-face:'Open Sans'; font-size: 3.5em; line-height: 1.1em; margin: 20px 0 0 0;">I vow to go to @vow.text</h2>
+            <div id="byline">
+                @defining(vow.user) { user =>
+                    @if(user != null) {
+                        <img src="@routes.Assets.at("images/mark4.jpeg")" width="50px" height="50px">
+                        <div class="bylineRight">
+                            <span class="nameMedium">@user.username</span>
+                            <ul>
+                                <li><span class="moment">@vow.createdAt</span></li>
+                            </ul>
+                        </div>
+                    }
+                }
+            </div>
+
+            <p class="status">You vowed! You can <button>take it back</button> if you can't commit.</p>
+
+            <span class="small_title">Other 280 Vowers:</span>
+
+            <div id="people">
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark4.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark4.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark5.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark4.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark5.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark4.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark4.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark3.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark4.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+                <div id="person">
+                    <div class="left">
+                        <img src="@routes.Assets.at("images/mark5.jpeg")">
+                    </div>
+                    <div class="right">
+                        <span class="name">Mark Jason</span>
+                        <br>
+                        <span class="fact">via <a href="#">twitter</a></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $(".moment" ).each(function(k, m) {
+                    var time = $(m).text();
+                    $(m).text(moment(time).format('lll'));
+                });
+            });
+        </script>
+    </body>
+</html>
+
+    <!--
+LOGO:
+Sansinita One
+90% width
+135% height
+
+-->

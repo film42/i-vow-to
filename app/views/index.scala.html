@@ -3,14 +3,15 @@
 
 @main("Users") {
     <br/>
-    @form(routes.Application.newVow) {
+    @if(session.get("username").isEmpty) {} else {
+        @form(routes.Application.newVow, 'class -> "form-inline") {
+            <span>I vow to </span>
+            <input type="text" name="text"/>
+            <input class="btn" type="submit" value="Vow">
 
-        I vow to <input type="text" name="text"/>
-
-        <input class="btn" type="submit" value="Vow">
-
+            <hr/>
+        }
     }
-    <hr/>
 
     <ul>
     @for(u <- users) {
@@ -20,10 +21,27 @@
 
     <hr/>
 
-    <ul>
+    <ul class="no-style">
     @for(v <- vows) {
-        <li><a href="/@v.slug">I vow to @v.text</a></li>
+        @defining(v.user) { user =>
+            <li><a href="/@v.slug">I vow to @v.text</a>
+                <div class="byline pull-right">
+                    <i> by <a href="@user.profileUrl">@user.username</a></i>
+                    <i> created <span class="moment">@v.createdAt</span></i>
+                </div>
+            </li>
+            <hr/>
+        }
     }
     </ul>
 
+    <script>
+        $(function () {
+            $(".moment" ).each(function(k, m) {
+                var time = $(m).text();
+                $(m).text(moment(time).fromNow());
+
+            });
+        });
+    </script>
 }
